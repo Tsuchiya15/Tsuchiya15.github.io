@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniture (家具のサイト)</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <h1>Furniture-stor</h1>
+    <button id="ham-btn"><span> </span></button> 
+    <!-- "ham-btn" class="is-active" でハンバーガーボタンを作成後に、消去-->
+
+  </header>
+
+  <nav id="g-nav">
+    <ul>
+      <li><a href="#">Brands</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Stores</a></li>
+      <li><a href="#">Catalogs</a></li>
+      <li><a href="#">Styling tips</a></li>
+      <li><a href="#">Partners & Press</a></li>
+    </ul>
+  </nav>
+
+  <p class="nav-title">Furniture-stor</p>
+
+
+
+  <main>
+
+    <div class="grid-wrapper">
+      <section class="contents">
+
+        <div class="content-text">
+          <h2>Lorem ipsum dolor sit.</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio maxime itaque amet consectetur quia quasi ex.
+          </p>
+        </div>
+        <div class="content-img">
+          <img src="img/main1-1.webp" alt="">
+        </div>
+      </section>
+
+      <section class="contents">
+        <div class="content-text">
+          <h2>Lorem ipsum dolor sit.</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio maxime itaque amet consectetur quia quasi ex.
+          </p>
+        </div>
+        <div class="content-img">
+          <img src="img/main1-2.webp" alt="">
+        </div>
+      </section>
+
+      <section class="contents">
+        <div class="content-text">
+          <h2>Lorem ipsum dolor sit.</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio maxime itaque amet consectetur quia quasi ex.
+          </p>
+        </div>
+        <div class="content-img">
+          <img src="img/main1-3.webp" alt="">
+        </div>
+
+
+      </section>
+    </div>
+
+    <section class="col-1">
+      <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, adipisci.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero laudantium voluptatum ipsam itaque assumenda!
+        Ab numquam ut maiores tempore commodi similique, iusto, non est culpa porro in nostrum magni quo.</p>
+    </section>
+
+    <div class="col-3-wrapper">
+
+      <section class="col-3-box">
+        <div class="col-3-text">
+          <h2>Lorem, ipsum.</h2>
+          <p class="icon"><img src="img/icon1.svg" alt=""></p>
+          <a href="#" class="to-more">view more</a>
+        </div>
+        <div class="col-3-img">
+          <img src="img/col-3-1.webp" alt="">
+        </div>
+      </section>
+
+      <section class="col-3-box">
+        <div class="col-3-text">
+          <h2>Lorem, ipsum.</h2>
+          <p class="icon"><img src="img/icon2.svg" alt=""></p>
+          <a href="#" class="to-more">view more</a>
+        </div>
+        <div class="col-3-img">
+          <img src="img/col-3-2.webp" alt="">
+      </section>
+
+      <section class="col-3-box">
+        <div class="col-3-text">
+          <h2>Lorem, ipsum.</h2>
+          <p class="icon"><img src="img/icom3.svg" alt=""></p>
+          <a href="#" class="to-more">view more</a>
+        </div>
+        <div class="col-3-img">
+          <img src="img/col-3-3.webp" alt="">
+
+      </section>
+    </div>
+
+  </main>
+  <footer>
+    <p><small>&copy;2025 Furniture-stor</small></p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+
+//ハンバーガーボタンをクリックしたら×に変わる指示
+$(function(){
+// #ham-btnをクリックしたら
+$('#ham-btn').on('click',function(){
+$(this).toggleClass('is-active');
+
+$('#g-nav').fadeToggle(200);
+});
+
+//cssの画面切り替えを、JQのみで設定
+//JQで #g-nav を隠す
+$('#g-nav').hide();
+
+//このままだと、g-navも消えてしまうので
+//画面の幅が900px以上にresizeかloadした時に、g-navを表示させる命令
+$(window).on('resize load',function(){
+  if(window.matchMedia('(min-width:900px)').matches){
+
+     //隠れているg-navを表示させる
+        $('#g-nav').show('resize load');
+        
+    //それ以外の時は、g-navを隠す（代わりにハンバーガーが表示）
+      }else{
+        $('#g-nav').hide('resize load');
+
+    //ハンバーガーボタンが✖になっているので、三に戻す命令
+        $('#ham-btn').removeClass('is-active');
+      }
+});
+
+//header要素以上の高さを取得する
+let headerH = $('header').outerHeight();
+
+// console.log(headerH);
+
+//wはスクロールの量
+$(window).on('scroll', function(){
+let w = $(window).scrollTop();
+
+// console.log(w);
+
+//header要素をスクロールしたら
+if(w > headerH){
+  //#g-nav要素に「.scroll」をaddする
+  $('#g-nav').addClass('scroll');
+}else{
+  $('#g-nav').removeClass('scroll');
+}
+
+
+});
+
+
+
+
+
+
+
+});
+
+// g-navの表示指定
+//デフォルトは非表示
+
+
+</script>
+
+</body>
+
+</html>
